@@ -1,5 +1,5 @@
 let Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-// var LED = new Gpio(4, 'out'); //use GPIO pin 12, and specify that it is output
+let LED = new Gpio(4, 'out'); //use GPIO pin 12, and specify that it is output
 // var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
 let request = require('request');
@@ -47,7 +47,6 @@ request({
 
 
 function blinkLED(body) { //function to start blinking
-    let LED = new Gpio(body['SW_GPIO_ID'], 'OUT');
     if (LED.readSync() !== body['SW_BOOL']) { //check the pin state, if the state is 0 (or off)
         LED.writeSync(body['SW_BOOL']); //set pin state to 1 (turn LED on)
     }
