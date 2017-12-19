@@ -18,7 +18,7 @@ request({
     console.log(initialData);
     setInterval(function () {
         request({
-            url: "http://localhost:8080/select",
+            url: "http://149.202.41.94:8080/select",
             method: "POST",
             json: true,
             body: params
