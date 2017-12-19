@@ -19,7 +19,6 @@ request({
     for (let t = 0; t < body.length; t++){
         LED[body[t]['SW_ID']] = new Gpio(body[t]['SW_GPIO_ID'], 'out');
     }
-    console.log(LED);
     initialData = body;
     console.log(initialData);
     setInterval(function () {
@@ -29,12 +28,13 @@ request({
             json: true,
             body: params
         }, function (error, response, body) {
-
             //on verifie qu'il n'y a pas eu de suppression ou d'ajout de lampes
             if (body.length !== initialData.length) {
+                for (let t = 0; t < body.length; t++){
+                    LED[body[t]['SW_ID']] = new Gpio(body[t]['SW_GPIO_ID'], 'out');
+                }
                 initialData = body;
-                //TODO::new gpio() avec les valeurs de la nouvelle row
-                //TODO::delete gpio correspondant si manque une row
+                console.log(LED);
             }
             else {
                 for (let i = 0; i < body.length; i++) {
