@@ -17,7 +17,7 @@ request({
     body: params
 }, function (error, response, body) {
     for (let t = 0; t < body.length; t++){
-        LED[body[i]['SW_ID']] = new Gpio(body[i]['SW_GPIO_ID'], 'out');
+        LED[body[t]['SW_ID']] = new Gpio(body[t]['SW_GPIO_ID'], 'out');
     }
     console.log(LED);
     initialData = body;
