@@ -47,7 +47,7 @@ request({
 
 
 function blinkLED(body) { //function to start blinking
-    if (LED.readSync() !== body['SW_BOOL']) { //check the pin state, if the state is 0 (or off)
+    if (LED.readSync() != body['SW_BOOL']) { //check the pin state, if the state is 0 (or off)
         LED.writeSync(body['SW_BOOL']); //set pin state to 1 (turn LED on)
     }
 }
